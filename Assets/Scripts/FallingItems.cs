@@ -8,7 +8,7 @@ public class FallingItems : MonoBehaviour
     [SerializeField] private float _gravity = 1;
 
     // Spawn object from the ceiling at random location
-    private void SpawnObject()
+    public void SpawnObject()
     {
         var targetRigidbody = _item.GetComponent<Rigidbody>();
         // set random falling location x and z, y is fixed because we need the height to be at the same position
