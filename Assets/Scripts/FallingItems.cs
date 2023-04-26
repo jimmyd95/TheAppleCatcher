@@ -18,12 +18,7 @@ public class FallingItems : MonoBehaviour
         Vector3 temp = new Vector3(_x, _y, _z);
         Debug.Log(temp);
         // add force for creating falling speed
-        //targetRigidbody.AddForce(new Vector3(0, -1, 0) * _gravity);
+        //targetRigidbody.AddForce(new Vector3(0, 1, 0) * _gravity);
         Instantiate(_item, temp, Quaternion.identity); // and then pop the item!
-    }
-
-    private void OnDestroy()
-    {
-        Destroy(_item);
     }
 }

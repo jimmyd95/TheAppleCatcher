@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class AppleCatcherController : MonoBehaviour
 {
-    public bool _paused = false; // set the game to 
-
     [SerializeField] private GameObject _appleGeneratorField;
     [SerializeField] private int _fallingAppleAmount = 10;
+
+    private bool _paused = false; // set the game to 
 
     // Start is called before the first frame update
     void Start()
@@ -31,16 +31,23 @@ public class AppleCatcherController : MonoBehaviour
         _appleGeneratorField.GetComponent<FallingItems>().SpawnObject(); // spawn the apple
     }
 
+    public void SwitchPause()
+    {
+        _paused = !_paused;
+    }
+
     // stop time depends on if pause has been triggered
     // This stops time.deltatime, but it does not stop anything in fixedUpdate
     private void StopTime()
     {
         if (_paused)
         {
+            Debug.Log("Time paused");
             Time.timeScale = 0;
         }
         else
         {
+            Debug.Log("Unpaused");
             Time.timeScale = 1;
         }
     }
