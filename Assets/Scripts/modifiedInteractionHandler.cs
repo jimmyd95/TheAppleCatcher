@@ -40,13 +40,19 @@ namespace Oculus.Voice.Demo
         [Header("Voice")]
         [SerializeField] private AppVoiceExperience _appVoiceExperience;
 
+        [Header("BallAI")]
+        [SerializeField] private GameObject _ballAI;
+        private float _originalRotationSpeed;
+        private Vector3 _originalVectorScale;
+
         // Whether voice is activated
         public bool IsActive => _active;
         private bool _active = false;
 
         private void Start()
         {
-
+            _originalRotationSpeed = _ballAI.GetComponent<AIAnimation>()._rotationSpeed;
+            _originalVectorScale = _ballAI.GetComponent<AIAnimation>()._vectorScale;
         }
 
         // Add delegates
@@ -95,12 +101,13 @@ namespace Oculus.Voice.Demo
         {
             //_textArea.text = $"Listening...";
             _buttonText.text = $"Listening";
+            _ballAI.GetComponent<AIAnimation>().setAIAnimationResponse(_originalRotationSpeed * 10,_originalVectorScale * 10);
         }
         // Listen stop
         private void OnListenStop()
         {
             //_textArea.text = "Processing...";
-            _textArea.text = "Processing";
+            _buttonText.text = "Processing";
         }
         // Listen stop
         private void OnListenForcedStop()
@@ -108,6 +115,7 @@ namespace Oculus.Voice.Demo
             if (!_showJson)
             {
                 _textArea.text = freshStateText;
+                _buttonText.text = "Voice";
             }
             OnRequestComplete();
         }

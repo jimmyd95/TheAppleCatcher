@@ -8,6 +8,7 @@ public class AppleCatcherController : MonoBehaviour
     [SerializeField] private int _fallingAppleAmount = 10;
 
     private bool _paused = false; // set the game to 
+    private List<GameObject> _apples;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,19 @@ public class AppleCatcherController : MonoBehaviour
     void GenerateApple()
     {
         _appleGeneratorField.GetComponent<FallingItems>().SpawnObject(); // spawn the apple
+    }
+
+    private void OnDestroy()
+    {
+        if (_appleGeneratorField == null) return;
+
+        var temp = _appleGeneratorField.GetComponent<FallingItems>()._items;
+        // run a for loop to check if there's anything inside the array
+        foreach (var item in temp)
+            if (item) // if there are items, destory it
+                Destroy(item);
+
+        temp.Clear(); // clean out the array
     }
 
     public void SwitchPause()
