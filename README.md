@@ -1,5 +1,5 @@
 # TheAppleCatcher
- An AR version of the apple catcher game where users can catch falling objects from the sky via a bucket
+ An AR version of the apple catcher game where users can catch falling objects from the sky via a bucket. Quest 2 doesn't record passthrough so it's pitch black, I will probably use Sidequest to make it the video recording slightly clearer... But right now sidequest isn't very nice to me...
  
 
 https://user-images.githubusercontent.com/16414366/236370210-102bf87e-2dbc-4147-bcee-f526613a5a26.mp4
