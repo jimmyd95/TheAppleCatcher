@@ -24,9 +24,14 @@ public class AppleCatcherController : MonoBehaviour
     public void DroppingApples()
     {
         float temp = Random.Range(0, 3);
-        Invoke(nameof(GenerateApple), temp);
+        float ran_apples = Random.Range(3,10);
+        for (int i = 0; i < ran_apples; i++)
+        {
+            Invoke(nameof(GenerateApple), temp);
+        }
     }
 
+    // Calls the FaillingItem script and spawn an apple with gravity there
     void GenerateApple()
     {
         _appleGeneratorField.GetComponent<FallingItems>().SpawnObject(); // spawn the apple
